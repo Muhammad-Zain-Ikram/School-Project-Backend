@@ -14,7 +14,13 @@ app.use(cors({
 }));
 
 app.options('*', cors());
-
+app.options('*', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', Origin);
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.sendStatus(204); // No content
+});
 app.use(
   helmet({
     contentSecurityPolicy: {
