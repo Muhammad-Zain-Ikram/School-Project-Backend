@@ -4,11 +4,14 @@ import cookieParser from "cookie-parser"
 import helmet from "helmet";
 
 const app = express()
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || ["http://localhost:5173", "http://192.168.1.5:5173"],
-  methods: ["GET", "POST", "PUT", "DELETE"], 
-  credentials: true, 
-}));
+const corsOrigin = process.env.CORS_ORIGIN || "https://school-project-backend-wheat.vercel.app";
+
+app.use(
+  cors({
+    origin: corsOrigin,
+    credentials: true,
+  })
+);
 
 app.options('*', cors());
 
