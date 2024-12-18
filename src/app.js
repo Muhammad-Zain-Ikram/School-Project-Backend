@@ -14,6 +14,10 @@ app.use(
 );
 console.log("CORS Origin:", corsOrigin);
 app.options('*', cors());
+app.get("/", (req, res) => {
+  console.log("Root route accessed");
+  res.send("Server is working!");
+});
 
 app.use(
   helmet({
