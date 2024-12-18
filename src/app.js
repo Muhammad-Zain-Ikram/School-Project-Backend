@@ -12,7 +12,7 @@ app.use(
     credentials: true,
   })
 );
-console.log("cors",corsOrigin,origin);
+console.log("CORS Origin:", corsOrigin);
 app.options('*', cors());
 
 app.use(
