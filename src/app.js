@@ -8,7 +8,7 @@ dotenv.config();
 const app = express()
 const Origin = process.env.CORS_ORIGIN
 app.use(cors({
-  origin: [Origin],
+  origin: Origin,
   methods: ["GET", "POST", "PUT", "DELETE"], 
   credentials: true, 
 }));
@@ -17,12 +17,13 @@ app.options('*', cors());
 
 app.use(
   helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"],
-        },
-      }
+    contentSecurityPolicy : false
+    // contentSecurityPolicy: {
+    //   directives: {
+    //     defaultSrc: ["'self'"],
+    //     scriptSrc: ["'self'"],
+    //     },
+    //   }
     })
   );
   app.use(helmet.xssFilter({ setOnOldIE: true }));
